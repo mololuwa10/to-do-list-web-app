@@ -14,6 +14,26 @@ namespace Backend.Models.Task
 		[Required]
 		public string? TaskName { get; set; }
 		
+		public string? TaskDescription { get; set; }
+		
+		public DateTime? DueDate { get; set; }
+		
+		public string? Priority { get; set; } // e.g., Low, Medium, High
+
+		public string? Category { get; set; } // e.g., Work, Personal
+		
 		public bool? IsCompleted { get; set; }
+		
+		public ICollection<SubTasks>? Subtasks { get; set; }
+
+		public Reccurence? Recurrence { get; set; }
+
+		public ICollection<Attachment>? Attachments { get; set; }
+		
+		// Foreign key for User
+        public int? UserId { get; set; }
+
+        // Navigation property for related user
+        public User? User { get; set; }
 	}
 }
