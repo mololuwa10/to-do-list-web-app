@@ -10,12 +10,11 @@ namespace Backend.Models.Task
 	{
 		[Key]
 		public int AttachmentId { get; set; }
-
+		
 		public string? AttachmentPath { get; set; } // Path or URL to the attachment
-
+		
 		public string? AttachmentType { get; set; } // Type of attachment e.g., file, image
-
-		public int TaskId { get; set; } // Foreign key to ToDoItem
+		public int TaskId { get; set; } // Foreign key to ToDoItem		
 		public ToDoItem? Task { get; set; }
 	}
 }

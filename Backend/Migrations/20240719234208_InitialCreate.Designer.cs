@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace _.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240718192823_AddUserAndTaskRelations-UserIdNullable")]
-    partial class AddUserAndTaskRelationsUserIdNullable
+    [Migration("20240719234208_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -132,28 +132,35 @@ namespace _.Migrations
                     b.Property<int?>("UserId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("UserId1")
+                        .HasColumnType("text");
+
                     b.HasKey("TaskId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("ToDoItems");
                 });
 
             modelBuilder.Entity("Backend.Models.User", b =>
                 {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserId"));
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("text");
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateTime?>("DateCreated")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("text");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
@@ -161,16 +168,37 @@ namespace _.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("text");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("NormalizedEmail")
                         .HasColumnType("text");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("text");
 
-                    b.HasKey("UserId");
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
@@ -212,7 +240,7 @@ namespace _.Migrations
                 {
                     b.HasOne("Backend.Models.User", "User")
                         .WithMany("ToDoItems")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("User");
                 });

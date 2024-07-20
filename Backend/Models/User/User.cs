@@ -9,10 +9,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Backend.Models
 {
 	public class User : IdentityUser
-	{
-		[Key]
-		public int UserId { get; set; }
-		
+	{		
 		public string? FirstName { get; set; }
 		
 		public string? LastName { get; set; }
@@ -28,7 +25,7 @@ namespace Backend.Models
 		// [Required]
 		// public string? PasswordHash { get; set; } // Hashed password
 
-		public DateTime? DateCreated { get; set; } = DateTime.Now;
+		public DateTime? DateCreated { get; set; } = DateTime.UtcNow ;
 		
 		public ICollection<ToDoItem>? ToDoItems {get; set;}
 	}

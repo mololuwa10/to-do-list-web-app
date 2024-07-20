@@ -7,41 +7,63 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace _.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUserAndTaskRelations : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Category",
-                table: "ToDoItems",
-                type: "text",
-                nullable: true);
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    LastName = table.Column<string>(type: "text", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    UserName = table.Column<string>(type: "text", nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "text", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "text", nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "text", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "boolean", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "boolean", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "boolean", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
 
-            migrationBuilder.AddColumn<DateTime>(
-                name: "DueDate",
-                table: "ToDoItems",
-                type: "timestamp with time zone",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Priority",
-                table: "ToDoItems",
-                type: "text",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "TaskDescription",
-                table: "ToDoItems",
-                type: "text",
-                nullable: true);
-
-            migrationBuilder.AddColumn<int>(
-                name: "UserId",
-                table: "ToDoItems",
-                type: "integer",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.CreateTable(
+                name: "ToDoItems",
+                columns: table => new
+                {
+                    TaskId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    TaskName = table.Column<string>(type: "text", nullable: false),
+                    TaskDescription = table.Column<string>(type: "text", nullable: true),
+                    DueDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    Priority = table.Column<string>(type: "text", nullable: true),
+                    Category = table.Column<string>(type: "text", nullable: true),
+                    IsCompleted = table.Column<bool>(type: "boolean", nullable: true),
+                    UserId = table.Column<int>(type: "integer", nullable: true),
+                    UserId1 = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ToDoItems", x => x.TaskId);
+                    table.ForeignKey(
+                        name: "FK_ToDoItems_Users_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
 
             migrationBuilder.CreateTable(
                 name: "Attachments",
@@ -107,29 +129,6 @@ namespace _.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    Username = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    Email = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    PasswordHash = table.Column<string>(type: "text", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ToDoItems_UserId",
-                table: "ToDoItems",
-                column: "UserId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Attachments_TaskId",
                 table: "Attachments",
@@ -146,22 +145,15 @@ namespace _.Migrations
                 table: "SubTasks",
                 column: "TaskId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_ToDoItems_Users_UserId",
+            migrationBuilder.CreateIndex(
+                name: "IX_ToDoItems_UserId1",
                 table: "ToDoItems",
-                column: "UserId",
-                principalTable: "Users",
-                principalColumn: "UserId",
-                onDelete: ReferentialAction.Cascade);
+                column: "UserId1");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_ToDoItems_Users_UserId",
-                table: "ToDoItems");
-
             migrationBuilder.DropTable(
                 name: "Attachments");
 
@@ -172,31 +164,10 @@ namespace _.Migrations
                 name: "SubTasks");
 
             migrationBuilder.DropTable(
+                name: "ToDoItems");
+
+            migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropIndex(
-                name: "IX_ToDoItems_UserId",
-                table: "ToDoItems");
-
-            migrationBuilder.DropColumn(
-                name: "Category",
-                table: "ToDoItems");
-
-            migrationBuilder.DropColumn(
-                name: "DueDate",
-                table: "ToDoItems");
-
-            migrationBuilder.DropColumn(
-                name: "Priority",
-                table: "ToDoItems");
-
-            migrationBuilder.DropColumn(
-                name: "TaskDescription",
-                table: "ToDoItems");
-
-            migrationBuilder.DropColumn(
-                name: "UserId",
-                table: "ToDoItems");
         }
     }
 }
