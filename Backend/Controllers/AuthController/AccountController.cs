@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Backend.Models.Token;
 using Backend.Data;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Backend.Controllers.AuthController
 {
@@ -81,6 +83,44 @@ namespace Backend.Controllers.AuthController
 			}
 
 			return BadRequest(ModelState);
+		}
+		
+		[HttpGet("details")]
+		[Authorize]
+		public async Task<IActionResult> GetUserDetails()
+		{
+			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+			if (string.IsNullOrEmpty(userId))
+			{
+				return Unauthorized("User not authenticated");
+			}
+
+			var user = await userManager!.FindByIdAsync(userId);
+			if (user == null)
+			{
+				return NotFound("User not found");
+			}
+
+			// Return all user details
+			return Ok(new 
+			{ 
+				Id = user.Id, 
+				FirstName = user.FirstName, 
+				LastName = user.LastName, 
+				UserName = user.UserName, 
+				Email = user.Email, 
+				DateCreated = user.DateCreated, 
+				ToDoItems = user.ToDoItems,
+				PhoneNumber = user.PhoneNumber,
+				PhoneNumberConfirmed = user.PhoneNumberConfirmed,
+				TwoFactorEnabled = user.TwoFactorEnabled,
+				LockoutEnabled = user.LockoutEnabled,
+				LockoutEnd = user.LockoutEnd,
+				AccessFailedCount = user.AccessFailedCount,
+				ConcurrencyStamp = user.ConcurrencyStamp,
+				SecurityStamp = user.SecurityStamp,
+				EmailConfirmed = user.EmailConfirmed,
+			});
 		}
 	}
 }

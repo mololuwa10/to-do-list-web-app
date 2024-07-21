@@ -1,11 +1,14 @@
+import Header from "@/components/LandingPageComponents/Header";
+import HeroSection from "@/components/LandingPageComponents/HeroSection";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <div className="items-center">Hello World</div>
-      </main>
+      <Header />
+      {/* <main className="flex min-h-screen flex-col justify-between"> */}
+        <HeroSection />
+      {/* </main> */}
     </>
   );
 }
