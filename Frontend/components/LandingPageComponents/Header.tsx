@@ -1,15 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useState, useEffect } from "react";
-import { fetchUserDetails, UserDetails } from "@/lib/auth";
+import { fetchUserDetails, useLogout, UserDetails } from "@/lib/auth";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuRadioGroup,
+    DropdownMenuRadioItem,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
     const [loading, setLoading] = useState(true);
 
+    const logout = useLogout();
+
     useEffect(() => {
-        // Fetch user details on component mount
         const getUserDetails = async () => {
             try {
                 const details = await fetchUserDetails();
@@ -89,7 +100,7 @@ export default function Header() {
                             >
                                 <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
                                     <a
-                                        href="#"
+                                        href="/"
                                         className="px-6 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                                     >
                                         Home
@@ -120,25 +131,53 @@ export default function Header() {
                                 {loading ? (
                                     <span>Loading...</span>
                                 ) : userDetails ? (
-                                    <button
-                                        type="button"
-                                        className="flex items-center focus:outline-none"
-                                        aria-label="toggle profile dropdown"
-                                    >
-                                        <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-                                                className="object-cover w-full h-full"
-                                                alt="avatar"
-                                            />
-                                        </div>
-                                        <h3 className="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">
-                                            {userDetails.userName}
-                                        </h3>
-                                    </button>
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger asChild>
+                                            <button
+                                                type="button"
+                                                className="flex items-center focus:outline-none cursor-pointer"
+                                                aria-label="toggle profile dropdown"
+                                            >
+                                                <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
+                                                    <img
+                                                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                                                        className="object-cover w-full h-full"
+                                                        alt="avatar"
+                                                    />
+                                                </div>
+                                                <h3 className="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">
+                                                    {userDetails.userName}
+                                                </h3>
+                                            </button>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent className="w-[10rem]">
+                                            {userDetails && (
+                                                <>
+                                                    <DropdownMenuLabel className="overflow-ellipsis">
+                                                        {userDetails.firstName}{" "}
+                                                        {userDetails.lastName}
+                                                    </DropdownMenuLabel>
+                                                    <DropdownMenuSeparator />
+                                                    <DropdownMenuItem className="cursor-pointer">
+                                                        Profile
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem className="cursor-pointer">
+                                                        Billing
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuSeparator />
+                                                    <DropdownMenuItem
+                                                        className="cursor-pointer"
+                                                        onClick={logout}
+                                                    >
+                                                        Log Out
+                                                    </DropdownMenuItem>
+                                                </>
+                                            )}
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
                                 ) : (
                                     <a
-                                        href="/register"
+                                        href="/GetStarted"
                                         className="px-6 py-3 mx-3 mt-2 transition-colors border-2 duration-300 transform rounded-3xl lg:mt-0 dark:text-gray-200 text-white bg-gray-800 hover:bg-gray-900 dark:hover:bg-gray-700"
                                     >
                                         Get Started

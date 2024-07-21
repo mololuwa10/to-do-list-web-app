@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { registerUser } from "@/lib/auth";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function Register() {
     const router = useRouter();
@@ -113,8 +114,16 @@ export default function Register() {
                     </div>
                 </div>
             </div>
+
             <div className="flex flex-1 items-center justify-center bg-white text-gray-800 p-6 rounded-lg">
                 <div className="text-center lg:text-left max-w-3xl">
+                    <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+                        Welcome to Task Mate
+                    </h1>
+
+                    <p className="mt-4 leading-relaxed text-gray-500">
+                        Your friendly companion for effortless task management
+                    </p>
                     <form
                         onSubmit={handleSubmit}
                         className="mt-8 grid grid-cols-6 gap-6"
@@ -215,9 +224,26 @@ export default function Register() {
                                 className="inline-block shrink-0 rounded-md border border-gray-600 bg-gray-800 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-gray-900 focus:outline-none focus:ring active:text-gray-500"
                                 disabled={loading}
                             >
-                                {loading
-                                    ? "Creating account..."
-                                    : "Create an account"}
+                                {loading ? (
+                                    <>
+                                        <motion.div
+                                            className="spinner-border animate-spin inline-block w-4 h-4 border-4 rounded-full border-t-transparent border-white mr-2"
+                                            initial={{ opacity: 0, rotate: 0 }}
+                                            animate={{
+                                                opacity: 1,
+                                                rotate: 360,
+                                            }}
+                                            transition={{
+                                                repeat: Infinity,
+                                                duration: 1,
+                                                ease: "linear",
+                                            }}
+                                        />
+                                        Creating account...
+                                    </>
+                                ) : (
+                                    "Create an account"
+                                )}
                             </button>
 
                             <p className="mt-4 text-sm text-gray-500 sm:mt-0">
