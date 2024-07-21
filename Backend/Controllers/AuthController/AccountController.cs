@@ -1,126 +1,155 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Backend.Data;
 using Backend.Models;
 using Backend.Models.Authentication;
+using Backend.Models.Token;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Backend.Models.Token;
-using Backend.Data;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
 
 namespace Backend.Controllers.AuthController
 {
-	[ApiController]
-	[Route("api/[controller]")]
-	public class AccountController : ControllerBase
-	{
-		private readonly UserManager<User>? userManager;
-		private readonly SignInManager<User>? signInManager;
-		private readonly IConfiguration? configuration;
-		
-		public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration) 
-		{
-			this.userManager = userManager;
-			this.signInManager = signInManager;
-			this.configuration = configuration;
-		}
-		
-		[HttpPost("register")]
-		public async Task<IActionResult> Register([FromBody] RegisterModel model)
-		{
-			if (ModelState.IsValid)
-			{
-				var user = new User { FirstName = model.FirstName, LastName = model.LastName, UserName = model.Username, Email = model.Email, DateCreated = DateTime.UtcNow.ToUtc() };
-				var result = await userManager!.CreateAsync(user, model.Password ?? string.Empty);
+    [ApiController]
+    [Route("api/[controller]")]
+    public class AccountController : ControllerBase
+    {
+        private readonly UserManager<User>? userManager;
+        private readonly SignInManager<User>? signInManager;
+        private readonly IConfiguration? configuration;
 
-				if (result.Succeeded)
-				{
-					var token = JwtTokenGenerator.GenerateToken(user.Id.ToString(), user.UserName ?? string.Empty, configuration!);
-					return Ok(new { Token = token, message = "User registered successfully" });
-				}
+        public AccountController(
+            UserManager<User> userManager,
+            SignInManager<User> signInManager,
+            IConfiguration configuration
+        )
+        {
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.configuration = configuration;
+        }
 
-				foreach (var error in result.Errors)
-				{
-					ModelState.AddModelError(string.Empty, error.Description);
-				}
-			}
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    UserName = model.Username,
+                    Email = model.Email,
+                    DateCreated = DateTime.UtcNow.ToUtc()
+                };
+                var result = await userManager!.CreateAsync(user, model.Password ?? string.Empty);
 
-			return BadRequest(ModelState);
-		}
-		
-		[HttpPost("login")]
-		public async Task<IActionResult> Login([FromBody] LoginModel model) 
-		{
-			if (ModelState.IsValid) 
-			{
-				User? user = null;
-				
-				if (new EmailAddressAttribute().IsValid(model.UsernameOrEmail)) 
-				{
-					user = await userManager!.FindByEmailAsync(model.UsernameOrEmail ?? string.Empty);
-				} 
-				else 
-				{
-					user = await userManager!.FindByNameAsync(model.UsernameOrEmail ?? string.Empty);
-				}
-				
-				if (user != null) 
-				{
-					var result = await signInManager!.CheckPasswordSignInAsync(user, model.Password ?? string.Empty, false);
-					
-					if (result.Succeeded) 
-					{
-						var token = JwtTokenGenerator.GenerateToken(user.Id.ToString(), user.UserName ?? string.Empty, configuration!);
-						return Ok(new { Token = token, message = "Login successful" });
-					}
-				}
+                if (result.Succeeded)
+                {
+                    var token = JwtTokenGenerator.GenerateToken(
+                        user.Id.ToString(),
+                        user.UserName ?? string.Empty,
+                        configuration!
+                    );
+                    return Ok(new { Token = token, message = "User registered successfully" });
+                }
 
-				ModelState.AddModelError(string.Empty, "Invalid Login attempt");
-			}
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
 
-			return BadRequest(ModelState);
-		}
-		
-		[HttpGet("details")]
-		[Authorize]
-		public async Task<IActionResult> GetUserDetails()
-		{
-			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-			if (string.IsNullOrEmpty(userId))
-			{
-				return Unauthorized("User not authenticated");
-			}
+            return BadRequest(ModelState);
+        }
 
-			var user = await userManager!.FindByIdAsync(userId);
-			if (user == null)
-			{
-				return NotFound("User not found");
-			}
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User? user = null;
 
-			// Return all user details
-			return Ok(new 
-			{ 
-				Id = user.Id, 
-				FirstName = user.FirstName, 
-				LastName = user.LastName, 
-				UserName = user.UserName, 
-				Email = user.Email, 
-				DateCreated = user.DateCreated, 
-				ToDoItems = user.ToDoItems,
-				PhoneNumber = user.PhoneNumber,
-				PhoneNumberConfirmed = user.PhoneNumberConfirmed,
-				TwoFactorEnabled = user.TwoFactorEnabled,
-				LockoutEnabled = user.LockoutEnabled,
-				LockoutEnd = user.LockoutEnd,
-				AccessFailedCount = user.AccessFailedCount,
-				ConcurrencyStamp = user.ConcurrencyStamp,
-				SecurityStamp = user.SecurityStamp,
-				EmailConfirmed = user.EmailConfirmed,
-			});
-		}
-	}
+                if (new EmailAddressAttribute().IsValid(model.UsernameOrEmail))
+                {
+                    user = await userManager!.FindByEmailAsync(
+                        model.UsernameOrEmail ?? string.Empty
+                    );
+                }
+                else
+                {
+                    user = await userManager!.FindByNameAsync(
+                        model.UsernameOrEmail ?? string.Empty
+                    );
+                }
+
+                if (user != null)
+                {
+                    var result = await signInManager!.CheckPasswordSignInAsync(
+                        user,
+                        model.Password ?? string.Empty,
+                        false
+                    );
+
+                    if (result.Succeeded)
+                    {
+                        var token = JwtTokenGenerator.GenerateToken(
+                            user.Id.ToString(),
+                            user.UserName ?? string.Empty,
+                            configuration!
+                        );
+                        return Ok(new { Token = token, message = "Login successful" });
+                    }
+                }
+
+                ModelState.AddModelError(string.Empty, "Invalid Login attempt");
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        [HttpGet("details")]
+        [Authorize]
+        public async Task<IActionResult> GetUserDetails()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User not authenticated");
+            }
+
+            var user = await userManager!.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            // Return all user details
+            return Ok(
+                new
+                {
+                    Id = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    DateCreated = user.DateCreated,
+                    ToDoItems = user.ToDoItems,
+                    PhoneNumber = user.PhoneNumber,
+                    PhoneNumberConfirmed = user.PhoneNumberConfirmed,
+                    TwoFactorEnabled = user.TwoFactorEnabled,
+                    LockoutEnabled = user.LockoutEnabled,
+                    LockoutEnd = user.LockoutEnd,
+                    AccessFailedCount = user.AccessFailedCount,
+                    ConcurrencyStamp = user.ConcurrencyStamp,
+                    SecurityStamp = user.SecurityStamp,
+                    EmailConfirmed = user.EmailConfirmed,
+                }
+            );
+        }
+    }
 }
