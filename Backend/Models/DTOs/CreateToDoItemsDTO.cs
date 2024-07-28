@@ -9,8 +9,9 @@ namespace Backend.Models.DTOs
 	{
 		public string? TaskName { get; set; }
 		public string? TaskDescription { get; set; }
-        public DateTime? DueDate { get; set; }
-        public string? Priority { get; set; }
-        public int CategoryId { get; set; }
+		public DateTime? DueDate { get; set; }
+		public string? Priority { get; set; }
+		public int? CategoryId { get; set; }
+		public string? CategoryName { get; set; }
 	}
 }

@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Backend.Data;
 using Backend.Models;
+using Backend.Models.Category;
 using Backend.Models.DTOs;
 using Backend.Models.Task;
 using Microsoft.AspNetCore.Authorization;
@@ -83,6 +84,32 @@ namespace Backend.Controllers.TaskController
 		)
 		{
 			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+			int? categoryId = createToDoItemsDTO.CategoryId;
+			
+			if(categoryId == null && !string.IsNullOrEmpty(createToDoItemsDTO.CategoryName)) 
+			{
+				// checking if the category already exist for the user
+				var existingCategory = await context.Categories.FirstOrDefaultAsync(c => c.UserId == userId && c.CategoryName == createToDoItemsDTO.CategoryName);
+				
+				if (existingCategory == null) 
+				{
+					var newCategory = new Category
+					{
+						CategoryName = createToDoItemsDTO.CategoryName,
+						UserId = userId,
+						DateCreated = DateTime.UtcNow
+					};
+
+					context.Categories.Add(newCategory);
+					await context.SaveChangesAsync();
+					
+					categoryId = newCategory.CategoryId;
+				} else 
+				{
+					categoryId = existingCategory.CategoryId;
+				}
+			}
+			
 			var item = new ToDoItem
 			{
 				TaskName = createToDoItemsDTO.TaskName,
@@ -91,7 +118,7 @@ namespace Backend.Controllers.TaskController
 				Priority = createToDoItemsDTO.Priority,
 				IsCompleted = false,
 				UserId = userId,
-				CategoryId = createToDoItemsDTO.CategoryId,
+				CategoryId = categoryId,
 				DateCreated = DateTime.UtcNow
 			};
 
