@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend.Models;
+using Backend.Models.Category;
 using Backend.Models.Task;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ namespace Backend.Data
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
 		public DbSet<ToDoItem> ToDoItems { get; set; }
+		public DbSet<Category> Categories { get; set; }
 		
 		public DbSet<Reccurence> Reccurences { get; set; }
 

@@ -20,7 +20,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
             >
-                Become focused, organized, and calm with Do It. Top #1 task manager<br /> and to-do list app in the world.
+                Become focused, organized, and calm with Task mate. Top task manager<br /> and to-do list app!
             </motion.p>
             <a href="/GetStarted">
                 <motion.button 

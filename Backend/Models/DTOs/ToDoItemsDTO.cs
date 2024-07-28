@@ -1,25 +1,23 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend.Models.Category;
+using Backend.Models.Task;
 
-namespace Backend.Models.Task
+namespace Backend.Models.DTOs
 {
-	public class ToDoItem
+	public class ToDoItemsDTO
 	{
-		[Key]
 		public int TaskId { get; set; }
 		
-		[Required]
 		public string? TaskName { get; set; }
 		
 		public string? TaskDescription { get; set; }
-
-		public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 		
-		public DateTime? DueDate { get; set; }
+		public DateTime DateCreated { get; set; }
+		
+		public DateTime DueDate { get; set; }
 		
 		public string? Priority { get; set; } // e.g., Low, Medium, High
 		
@@ -31,13 +29,9 @@ namespace Backend.Models.Task
 
 		public ICollection<Attachment>? Attachments { get; set; }
 		
-		// Foreign key for User
-		public string? UserId { get; set; }
-
-		// Navigation property for related user
-		public User? User { get; set; }
+		public int CategoryId { get; set; }
 		
-		public int? CategoryId { get; set; }
-		public Backend.Models.Category.Category? TaskCategory { get; set; } // e.g., Work, Personal
+		public string? UserId { get; set; }
+		
 	}
 }

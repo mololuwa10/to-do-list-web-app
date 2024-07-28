@@ -91,6 +91,8 @@ using (var scope = app.Services.CreateScope())
 	var services = scope.ServiceProvider;
 	var dbContext = services.GetRequiredService<ApplicationDbContext>();
 	dbContext.Database.Migrate();
+
+	SeedData.Initialize(services);
 }
 
 app.Run();

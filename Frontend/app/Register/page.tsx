@@ -117,13 +117,23 @@ export default function Register() {
 
             <div className="flex flex-1 items-center justify-center bg-white text-gray-800 p-6 rounded-lg">
                 <div className="text-center lg:text-left max-w-3xl">
-                    <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+                    <motion.h1
+                        className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
                         Welcome to Task Mate
-                    </h1>
+                    </motion.h1>
 
-                    <p className="mt-4 leading-relaxed text-gray-500">
+                    <motion.p
+                        className="mt-4 leading-relaxed text-gray-500"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                    >
                         Your friendly companion for effortless task management
-                    </p>
+                    </motion.p>
                     <form
                         onSubmit={handleSubmit}
                         className="mt-8 grid grid-cols-6 gap-6"
