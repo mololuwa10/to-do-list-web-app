@@ -7,13 +7,16 @@ using Microsoft.AspNetCore.Antiforgery;
 
 namespace Backend.Models.Authentication
 {
-	public class LoginModel
-	{
-		[Required]
-		public string? UsernameOrEmail { get; set; }
-		
-		[Required]
-		[DataType(DataType.Password)]
-		public string? Password { get; set; }
-	}
+    public class LoginModel
+    {
+        [Required]
+        public string? UsernameOrEmail { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string? Password { get; set; }
+
+        // [Required]
+        // public string? IdToken { get; set; }
+    }
 }
