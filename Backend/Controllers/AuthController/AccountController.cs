@@ -38,6 +38,14 @@ namespace Backend.Controllers.AuthController
         {
             if (ModelState.IsValid)
             {
+                #pragma warning disable
+                var existingUser = await userManager?.FindByEmailAsync(model.Email ?? string.Empty);
+
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError("Email", "The email address is already in use.");
+                    return BadRequest(ModelState);
+                }
                 var user = new User
                 {
                     FirstName = model.FirstName,
