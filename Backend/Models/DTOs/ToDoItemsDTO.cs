@@ -32,6 +32,5 @@ namespace Backend.Models.DTOs
 		public int CategoryId { get; set; }
 		
 		public string? UserId { get; set; }
-		
 	}
 }

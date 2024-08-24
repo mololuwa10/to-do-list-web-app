@@ -11,6 +11,8 @@ namespace Backend.Models.Task
 		[Key]
 		public int AttachmentId { get; set; }
 		
+		public string? AttachmentName { get; set; } // Name of attachment
+		
 		public string? AttachmentPath { get; set; } // Path or URL to the attachment
 		
 		public string? AttachmentType { get; set; } // Type of attachment e.g., file, image
