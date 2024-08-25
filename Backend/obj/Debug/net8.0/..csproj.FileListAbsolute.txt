@@ -336,3 +336,5 @@ C:\Users\molol\Documents\Projects\ToDoListWeb\to-do-list-web-app\Backend\obj\Deb
 C:\Users\molol\Documents\Projects\ToDoListWeb\to-do-list-web-app\Backend\obj\Debug\net8.0\..pdb
 C:\Users\molol\Documents\Projects\ToDoListWeb\to-do-list-web-app\Backend\obj\Debug\net8.0\..genruntimeconfig.cache
 C:\Users\molol\Documents\Projects\ToDoListWeb\to-do-list-web-app\Backend\obj\Debug\net8.0\ref\..dll
+C:\Users\molol\Documents\Projects\ToDoListWeb\to-do-list-web-app\Backend\bin\Debug\net8.0\DotNetEnv.dll
+C:\Users\molol\Documents\Projects\ToDoListWeb\to-do-list-web-app\Backend\bin\Debug\net8.0\Sprache.dll
