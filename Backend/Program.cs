@@ -18,13 +18,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Load environment variables from .env file
 DotNetEnv.Env.Load();
 
-var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
-var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
-var dbName = Environment.GetEnvironmentVariable("DB_NAME");
-var dbUser = Environment.GetEnvironmentVariable("DB_USER");
-var dbPass = Environment.GetEnvironmentVariable("DB_PASS");
+// var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+// var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
+// var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+// var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+// var dbPass = Environment.GetEnvironmentVariable("DB_PASS");
 
-var connectionString = $"Host={dbHost}; Port={dbPort}; Database={dbName}; Username={dbUser}; Password={dbPass};";
+// var connectionString = $"Host={dbHost}; Port={dbPort}; Database={dbName}; Username={dbUser}; Password={dbPass};";
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -35,13 +35,13 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 });
 
 // Add DbContext and specify PostgreSQL connection
-// builder.Services.AddDbContext<ApplicationDbContext>(options =>
-// 	options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
-// );
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-	options.UseNpgsql(connectionString)
+	options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+// 	options.UseNpgsql(connectionString)
+// );
 
 builder.Configuration.AddEnvironmentVariables();
 
