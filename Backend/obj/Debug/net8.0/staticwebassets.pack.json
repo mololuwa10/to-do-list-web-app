@@ -245,12 +245,32 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\245e7815-9780-409a-b7b6-7f099f3ed0e5.jpg",
+      "PackagePath": "staticwebassets\\uploads\\245e7815-9780-409a-b7b6-7f099f3ed0e5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\653f6917-09ca-43e1-98ef-291d9c15e6af.jpg",
+      "PackagePath": "staticwebassets\\uploads\\653f6917-09ca-43e1-98ef-291d9c15e6af.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\7d656c8e-632c-4945-bf70-7f5a69d9fe79.jpg",
+      "PackagePath": "staticwebassets\\uploads\\7d656c8e-632c-4945-bf70-7f5a69d9fe79.jpg"
+    },
+    {
       "Id": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\9d1d7e18-38f3-4b9a-ae12-c3f6ded6fdbc.jpg",
       "PackagePath": "staticwebassets\\uploads\\9d1d7e18-38f3-4b9a-ae12-c3f6ded6fdbc.jpg"
     },
     {
       "Id": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\b371b53c-7aa3-4e5c-b36e-e4b6e6a702ad.jpg",
       "PackagePath": "staticwebassets\\uploads\\b371b53c-7aa3-4e5c-b36e-e4b6e6a702ad.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\b5fb2d81-97d7-40c2-a571-c93e97a20059.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b5fb2d81-97d7-40c2-a571-c93e97a20059.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\d744aa0c-5072-4350-aed8-82fe6c8419ee.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d744aa0c-5072-4350-aed8-82fe6c8419ee.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild...Microsoft.AspNetCore.StaticWebAssets.props",
