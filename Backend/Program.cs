@@ -1,4 +1,6 @@
+using System.Security.Cryptography.Xml;
 using System.Text;
+using System.Text.Json.Serialization;
 using Backend.Data;
 using Backend.Models;
 // using Backend.Service;
@@ -14,6 +16,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+	options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+});
 
 // Add DbContext and specify PostgreSQL connection
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

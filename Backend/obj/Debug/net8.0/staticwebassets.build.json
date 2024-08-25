@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FbnRtgNU8DzCqKm8NTNGTT6KuDYkV3+Q69tsJTuBppY=",
+  "Hash": "5xsjMgInkriBmoRpoiX7YW5rqTsD9K7k7ruG/k1/dQE=",
   "Source": ".",
   "BasePath": "_content/.",
   "Mode": "Default",
@@ -1193,6 +1193,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\9d1d7e18-38f3-4b9a-ae12-c3f6ded6fdbc.jpg",
+      "SourceId": ".",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\",
+      "BasePath": "_content/.",
+      "RelativePath": "uploads/9d1d7e18-38f3-4b9a-ae12-c3f6ded6fdbc.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\9d1d7e18-38f3-4b9a-ae12-c3f6ded6fdbc.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\b371b53c-7aa3-4e5c-b36e-e4b6e6a702ad.jpg",
+      "SourceId": ".",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\",
+      "BasePath": "_content/.",
+      "RelativePath": "uploads/b371b53c-7aa3-4e5c-b36e-e4b6e6a702ad.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\b371b53c-7aa3-4e5c-b36e-e4b6e6a702ad.jpg"
     }
   ]
 }

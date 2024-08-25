@@ -245,6 +245,14 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\9d1d7e18-38f3-4b9a-ae12-c3f6ded6fdbc.jpg",
+      "PackagePath": "staticwebassets\\uploads\\9d1d7e18-38f3-4b9a-ae12-c3f6ded6fdbc.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\b371b53c-7aa3-4e5c-b36e-e4b6e6a702ad.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b371b53c-7aa3-4e5c-b36e-e4b6e6a702ad.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild...Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Backend.Models.Category;
 
@@ -25,10 +26,13 @@ namespace Backend.Models.Task
 		
 		public bool? IsCompleted { get; set; }
 		
+		[JsonIgnore]
 		public ICollection<SubTasks>? Subtasks { get; set; }
-
+		
+		[JsonIgnore]
 		public Reccurence? Recurrence { get; set; }
-
+		
+		[JsonIgnore]
 		public ICollection<Attachment>? Attachments { get; set; }
 		
 		// Foreign key for User
