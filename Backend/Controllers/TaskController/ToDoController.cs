@@ -52,7 +52,7 @@ namespace Backend.Controllers.TaskController
                     UserId = t.UserId,
                     Subtasks = t.Subtasks,
                     Recurrence = t.Recurrence,
-                    Attachments = t.Attachments
+                    Attachments = t.Attachments,
                 })
                 .ToListAsync();
 
@@ -78,7 +78,7 @@ namespace Backend.Controllers.TaskController
                     UserId = t.UserId,
                     Subtasks = t.Subtasks,
                     Recurrence = t.Recurrence,
-                    Attachments = t.Attachments
+                    Attachments = t.Attachments,
                 })
                 .FirstOrDefaultAsync();
 
@@ -88,6 +88,76 @@ namespace Backend.Controllers.TaskController
             }
 
             return Ok(item);
+        }
+
+        // Get In-Progress Tasks (IsCompleted = false)
+        [HttpGet("in-progress")]
+        public async Task<ActionResult<IEnumerable<ToDoItemsDTO>>> GetInProgressTasks()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User must be logged in");
+            }
+            var itemsQuery = context.ToDoItems.Where(t =>
+                t.UserId == userId && t.IsCompleted == false
+            );
+
+            var count = await itemsQuery.CountAsync();
+            var items = await itemsQuery
+                .Select(t => new ToDoItemsDTO
+                {
+                    TaskId = t.TaskId,
+                    TaskName = t.TaskName,
+                    TaskDescription = t.TaskDescription,
+                    DueDate = t.DueDate.HasValue ? t.DueDate.Value : DateTime.MinValue,
+                    Priority = t.Priority,
+                    IsCompleted = t.IsCompleted,
+                    CategoryId = t.CategoryId.HasValue ? (int)t.CategoryId : 0,
+                    DateCreated = t.DateCreated,
+                    UserId = t.UserId,
+                    Subtasks = t.Subtasks,
+                    Recurrence = t.Recurrence,
+                    Attachments = t.Attachments,
+                })
+                .ToListAsync();
+
+            return Ok(new { Count = count, Items = items });
+        }
+
+        // Get Completed Tasks (IsCompleted = true)
+        [HttpGet("completed")]
+        public async Task<ActionResult<IEnumerable<ToDoItemsDTO>>> GetCompletedTasks()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User must be logged in");
+            }
+            var itemsQuery = context.ToDoItems.Where(t =>
+                t.UserId == userId && t.IsCompleted == true
+            );
+
+            var count = await itemsQuery.CountAsync();
+            var items = await itemsQuery
+                .Select(t => new ToDoItemsDTO
+                {
+                    TaskId = t.TaskId,
+                    TaskName = t.TaskName,
+                    TaskDescription = t.TaskDescription,
+                    DueDate = t.DueDate.HasValue ? t.DueDate.Value : DateTime.MinValue,
+                    Priority = t.Priority,
+                    IsCompleted = t.IsCompleted,
+                    CategoryId = t.CategoryId.HasValue ? (int)t.CategoryId : 0,
+                    DateCreated = t.DateCreated,
+                    UserId = t.UserId,
+                    Subtasks = t.Subtasks,
+                    Recurrence = t.Recurrence,
+                    Attachments = t.Attachments,
+                })
+                .ToListAsync();
+
+            return Ok(new { Count = count, Items = items });
         }
 
         // POST: api/todo
@@ -129,7 +199,7 @@ namespace Backend.Controllers.TaskController
                     {
                         CategoryName = createToDoItemsDTO.CategoryName,
                         UserId = userId,
-                        DateCreated = DateTime.UtcNow
+                        DateCreated = DateTime.UtcNow,
                     };
 
                     context.Categories.Add(newCategory);
@@ -148,7 +218,7 @@ namespace Backend.Controllers.TaskController
                 IsCompleted = false,
                 UserId = userId,
                 CategoryId = categoryId,
-                DateCreated = DateTime.UtcNow
+                DateCreated = DateTime.UtcNow,
             };
 
             context.ToDoItems.Add(item);
@@ -165,7 +235,7 @@ namespace Backend.Controllers.TaskController
                         SubtaskDescription = subtaskDto.SubtaskDescription,
                         SubtaskDueDate = subtaskDto.SubtaskDueDate,
                         SubtaskIsCompleted = false,
-                        TaskId = item.TaskId
+                        TaskId = item.TaskId,
                     };
                     context.SubTasks.Add(subTask);
                 }
@@ -177,7 +247,7 @@ namespace Backend.Controllers.TaskController
                 var recurrence = new Reccurence
                 {
                     Interval = createToDoItemsDTO.Recurrence.Interval,
-                    TaskId = item.TaskId
+                    TaskId = item.TaskId,
                 };
                 context.Reccurences.Add(recurrence);
             }
@@ -206,7 +276,7 @@ namespace Backend.Controllers.TaskController
                             AttachmentName = file.FileName,
                             AttachmentPath = filePath,
                             AttachmentType = file.ContentType,
-                            TaskId = item.TaskId
+                            TaskId = item.TaskId,
                         };
                         context.Attachments.Add(attachment);
                     }
@@ -231,7 +301,7 @@ namespace Backend.Controllers.TaskController
                     CategoryId = item.CategoryId.HasValue ? (int)item.CategoryId : 0,
                     Subtasks = item.Subtasks,
                     Recurrence = item.Recurrence,
-                    Attachments = item.Attachments
+                    Attachments = item.Attachments,
                 }
             );
         }
@@ -276,7 +346,7 @@ namespace Backend.Controllers.TaskController
                 CategoryId = toDoItem.CategoryId.HasValue ? (int)toDoItem.CategoryId : 0,
                 Subtasks = toDoItem.Subtasks,
                 Recurrence = toDoItem.Recurrence,
-                Attachments = toDoItem.Attachments
+                Attachments = toDoItem.Attachments,
             };
 
             return Ok(updatedItemDTO);
