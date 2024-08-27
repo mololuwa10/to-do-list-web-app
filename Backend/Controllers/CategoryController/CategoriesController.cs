@@ -25,9 +25,9 @@ namespace Backend.Controllers.CategoryController
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var categories = await dbContext
-                .Categories.Where(c => c.UserId == null || c.UserId == userId)
+                .Categories
                 .ToListAsync();
 
             return Ok(categories);
