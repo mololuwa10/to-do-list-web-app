@@ -59,61 +59,61 @@ export default function Footer() {
                         <div>
                             <h3 className="text-lg font-semibold">Company</h3>
                             <ul className="mt-2 space-y-2">
-                                <li>
+                                <motion.li whileHover={{ scale: 1.1 }}>
                                     <a href="#" className="hover:underline">
                                         Home
                                     </a>
-                                </li>
-                                <li>
+                                </motion.li>
+                                <motion.li whileHover={{ scale: 1.1 }}>
                                     <a href="#" className="hover:underline">
                                         About Us
                                     </a>
-                                </li>
-                                <li>
+                                </motion.li>
+                                <motion.li whileHover={{ scale: 1.1 }}>
                                     <a href="#" className="hover:underline">
                                         Services
                                     </a>
-                                </li>
-                                <li>
+                                </motion.li>
+                                <motion.li whileHover={{ scale: 1.1 }}>
                                     <a href="#" className="hover:underline">
                                         Contacts
                                     </a>
-                                </li>
+                                </motion.li>
                             </ul>
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Support</h3>
                             <ul className="mt-2 space-y-2">
-                                <li>
+                                <motion.li whileHover={{ scale: 1.1 }}>
                                     <a href="#" className="hover:underline">
                                         Help Center
                                     </a>
-                                </li>
-                                <li>
+                                </motion.li>
+                                <motion.li whileHover={{ scale: 1.1 }}>
                                     <a href="#" className="hover:underline">
                                         FAQs
                                     </a>
-                                </li>
-                                <li>
+                                </motion.li>
+                                <motion.li whileHover={{ scale: 1.1 }}>
                                     <a href="#" className="hover:underline">
                                         Forums
                                     </a>
-                                </li>
+                                </motion.li>
                             </ul>
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold">Legal</h3>
                             <ul className="mt-2 space-y-2">
-                                <li>
+                                <motion.li whileHover={{ scale: 1.1 }}>
                                     <a href="#" className="hover:underline">
                                         Privacy Policy
                                     </a>
-                                </li>
-                                <li>
+                                </motion.li>
+                                <motion.li whileHover={{ scale: 1.1 }}>
                                     <a href="#" className="hover:underline">
                                         Terms of Use
                                     </a>
-                                </li>
+                                </motion.li>
                             </ul>
                         </div>
                     </div>

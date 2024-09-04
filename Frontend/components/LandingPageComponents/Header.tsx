@@ -99,25 +99,25 @@ export default function Header() {
                     <div className="hidden lg:flex space-x-10">
                         <a
                             href="/"
-                            className="text-gray-700 dark:text-gray-200 hover:text-gray-100"
+                            className="text-gray-700 dark:text-gray-200 hover:text-gray-900"
                         >
                             Home
                         </a>
                         <a
                             href="#"
-                            className="text-gray-700 dark:text-gray-200 hover:text-gray-100"
+                            className="text-gray-700 dark:text-gray-200 hover:text-gray-900"
                         >
                             About us
                         </a>
                         <a
                             href="#"
-                            className="text-gray-700 dark:text-gray-200 hover:text-gray-100"
+                            className="text-gray-700 dark:text-gray-200 hover:text-gray-900"
                         >
                             Services
                         </a>
                         <a
                             href="#"
-                            className="text-gray-700 dark:text-gray-200 hover:text-gray-100"
+                            className="text-gray-700 dark:text-gray-200 hover:text-gray-900"
                         >
                             Contact
                         </a>
@@ -187,25 +187,25 @@ export default function Header() {
                         <div className="flex flex-col space-y-4 px-6 py-4">
                             <a
                                 href="/"
-                                className="text-gray-700 dark:text-gray-200 hover:text-gray-100"
+                                className="text-gray-700 dark:text-gray-200 hover:text-gray-900"
                             >
                                 Home
                             </a>
                             <a
                                 href="#"
-                                className="text-gray-700 dark:text-gray-200 hover:text-gray-100"
+                                className="text-gray-700 dark:text-gray-200 hover:text-gray-900"
                             >
                                 About us
                             </a>
                             <a
                                 href="#"
-                                className="text-gray-700 dark:text-gray-200 hover:text-gray-100"
+                                className="text-gray-700 dark:text-gray-200 hover:text-gray-900"
                             >
                                 Services
                             </a>
                             <a
                                 href="#"
-                                className="text-gray-700 dark:text-gray-200 hover:text-gray-100"
+                                className="text-gray-700 dark:text-gray-200 hover:text-gray-900"
                             >
                                 Contact
                             </a>

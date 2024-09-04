@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "h7RwZ2uWunl6HiVb1Vp+B2HhCH+6mMQzHHL/3KnNJYU=",
+  "Hash": "JVUSu6UFhUE7B2vjchudgZb7yM34ztmTL7+WJlhKPf0=",
   "Source": ".",
   "BasePath": "_content/.",
   "Mode": "Default",
@@ -1214,6 +1214,25 @@
       "OriginalItemSpec": "wwwroot\\uploads\\245e7815-9780-409a-b7b6-7f099f3ed0e5.jpg"
     },
     {
+      "Identity": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\3f216b88-f33b-4c57-9b91-c7c62c889e30.jpeg",
+      "SourceId": ".",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\",
+      "BasePath": "_content/.",
+      "RelativePath": "uploads/3f216b88-f33b-4c57-9b91-c7c62c889e30.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\3f216b88-f33b-4c57-9b91-c7c62c889e30.jpeg"
+    },
+    {
       "Identity": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\653f6917-09ca-43e1-98ef-291d9c15e6af.jpg",
       "SourceId": ".",
       "SourceType": "Discovered",
@@ -1250,6 +1269,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\7d656c8e-632c-4945-bf70-7f5a69d9fe79.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\8ae4f1a3-63f9-4fe1-b2e0-7f31c94bcd90.jpeg",
+      "SourceId": ".",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\",
+      "BasePath": "_content/.",
+      "RelativePath": "uploads/8ae4f1a3-63f9-4fe1-b2e0-7f31c94bcd90.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\8ae4f1a3-63f9-4fe1-b2e0-7f31c94bcd90.jpeg"
     },
     {
       "Identity": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\9d1d7e18-38f3-4b9a-ae12-c3f6ded6fdbc.jpg",
@@ -1326,6 +1364,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\d744aa0c-5072-4350-aed8-82fe6c8419ee.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\fc3d3fa1-509c-4abf-b029-0fe2b863196b.jpeg",
+      "SourceId": ".",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\",
+      "BasePath": "_content/.",
+      "RelativePath": "uploads/fc3d3fa1-509c-4abf-b029-0fe2b863196b.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\fc3d3fa1-509c-4abf-b029-0fe2b863196b.jpeg"
     }
   ]
 }

@@ -249,12 +249,20 @@
       "PackagePath": "staticwebassets\\uploads\\245e7815-9780-409a-b7b6-7f099f3ed0e5.jpg"
     },
     {
+      "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\3f216b88-f33b-4c57-9b91-c7c62c889e30.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\3f216b88-f33b-4c57-9b91-c7c62c889e30.jpeg"
+    },
+    {
       "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\653f6917-09ca-43e1-98ef-291d9c15e6af.jpg",
       "PackagePath": "staticwebassets\\uploads\\653f6917-09ca-43e1-98ef-291d9c15e6af.jpg"
     },
     {
       "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\7d656c8e-632c-4945-bf70-7f5a69d9fe79.jpg",
       "PackagePath": "staticwebassets\\uploads\\7d656c8e-632c-4945-bf70-7f5a69d9fe79.jpg"
+    },
+    {
+      "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\8ae4f1a3-63f9-4fe1-b2e0-7f31c94bcd90.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\8ae4f1a3-63f9-4fe1-b2e0-7f31c94bcd90.jpeg"
     },
     {
       "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\9d1d7e18-38f3-4b9a-ae12-c3f6ded6fdbc.jpg",
@@ -271,6 +279,10 @@
     {
       "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\d744aa0c-5072-4350-aed8-82fe6c8419ee.jpg",
       "PackagePath": "staticwebassets\\uploads\\d744aa0c-5072-4350-aed8-82fe6c8419ee.jpg"
+    },
+    {
+      "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\fc3d3fa1-509c-4abf-b029-0fe2b863196b.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\fc3d3fa1-509c-4abf-b029-0fe2b863196b.jpeg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild...Microsoft.AspNetCore.StaticWebAssets.props",
