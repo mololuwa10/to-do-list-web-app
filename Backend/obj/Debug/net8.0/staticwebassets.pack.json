@@ -245,6 +245,14 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\028d29a9-0f77-4655-9d9b-9a29d8e1f15c.png",
+      "PackagePath": "staticwebassets\\uploads\\028d29a9-0f77-4655-9d9b-9a29d8e1f15c.png"
+    },
+    {
+      "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\0dafaf3a-3aa2-4f20-88ec-cb9e9c3b97a4.png",
+      "PackagePath": "staticwebassets\\uploads\\0dafaf3a-3aa2-4f20-88ec-cb9e9c3b97a4.png"
+    },
+    {
       "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\245e7815-9780-409a-b7b6-7f099f3ed0e5.jpg",
       "PackagePath": "staticwebassets\\uploads\\245e7815-9780-409a-b7b6-7f099f3ed0e5.jpg"
     },
@@ -255,6 +263,10 @@
     {
       "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\653f6917-09ca-43e1-98ef-291d9c15e6af.jpg",
       "PackagePath": "staticwebassets\\uploads\\653f6917-09ca-43e1-98ef-291d9c15e6af.jpg"
+    },
+    {
+      "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\66358f23-0fb1-4e89-b9bd-0f44ffb31fdf.png",
+      "PackagePath": "staticwebassets\\uploads\\66358f23-0fb1-4e89-b9bd-0f44ffb31fdf.png"
     },
     {
       "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\7d656c8e-632c-4945-bf70-7f5a69d9fe79.jpg",
@@ -275,6 +287,10 @@
     {
       "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\b5fb2d81-97d7-40c2-a571-c93e97a20059.jpg",
       "PackagePath": "staticwebassets\\uploads\\b5fb2d81-97d7-40c2-a571-c93e97a20059.jpg"
+    },
+    {
+      "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\d2774f69-1308-4650-98be-9a3c65c8cdf6.png",
+      "PackagePath": "staticwebassets\\uploads\\d2774f69-1308-4650-98be-9a3c65c8cdf6.png"
     },
     {
       "Id": "C:\\Users\\molol\\Documents\\Projects\\ToDoListWeb\\to-do-list-web-app\\Backend\\wwwroot\\uploads\\d744aa0c-5072-4350-aed8-82fe6c8419ee.jpg",

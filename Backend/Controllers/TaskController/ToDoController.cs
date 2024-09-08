@@ -261,6 +261,7 @@ namespace Backend.Controllers.TaskController
 					{
 						// Define a path to save the file
 						var filePath = Path.Combine("wwwroot", "uploads", Guid.NewGuid().ToString() + Path.GetExtension(file.FileName));
+						filePath = filePath.Replace("\\", "/");
 						
 						// Optionally, you may want to ensure the uploads directory exists
 						var directoryPath = Path.GetDirectoryName(filePath);
@@ -278,7 +279,7 @@ namespace Backend.Controllers.TaskController
 						var attachment = new Attachment
 						{
 							AttachmentName = file.FileName,
-							AttachmentPath = filePath.Replace("wwwroot", ""),
+							AttachmentPath = filePath,
 							AttachmentType = file.ContentType,
 							TaskId = item.TaskId,
 						};

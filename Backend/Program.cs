@@ -39,10 +39,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 	options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-// builder.Services.AddDbContext<ApplicationDbContext>(options =>
-// 	options.UseNpgsql(connectionString)
-// );
-
 builder.Configuration.AddEnvironmentVariables();
 
 // Add Identity services
@@ -92,8 +88,8 @@ builder.Services.AddControllers();
 builder.Services.AddCors(options =>
 {
 	options.AddPolicy(
-		// "AllowAllOrigins",
-		"AllowAll",
+		"AllowAllOrigins",
+		// "AllowAll",
 		builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
 	);
 });
@@ -152,7 +148,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors("AllowAll");
+app.UseCors("AllowAllOrigins");
 
 app.UseAuthentication();
 app.UseAuthorization();
